@@ -13,12 +13,12 @@
 
 <?php
 
-require_once('path.inc');
-require_once('get_host_info.inc');
-require_once('rabbitMQLib.inc');
+require_once('loginRmqClient.php');
 
-$user = $_POST['username'];
-$passwd = $_POST['password'];
+$client = new loginRmqClient($_POST['username'], $_POST['password']);
+
+$client->verify();
+/*$passwd = $_POST['password'];
 
 $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 echo "here";
@@ -36,7 +36,7 @@ echo "client received response: ".PHP_EOL;
 print_r($response);
 echo "\n\n";
 
-echo $argv[0]." END".PHP_EOL;
+echo $argv[0]." END".PHP_EOL;*/
 
 ?>
 
